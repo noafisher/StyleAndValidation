@@ -76,12 +76,13 @@ namespace StyleAndValidation.ViewModels
         {
            User registered=new () { BirthDate=BirthDate, Email=Email, FullName=FullName, Password=Password, Username=Username};
             #region מסך טעינה
-            //await AppShell.Current.GoToAsync("Loading");
+            await AppShell.Current.GoToAsync("Loading");
             //var loading=AppShell.Current.CurrentPage.BindingContext as LoadingPageViewModel;
             #endregion
             bool ok = await appServices.RegisterUserAsync(registered);
 
-          #region סגירת מסך טעינה
+            #region סגירת מסך טעינה
+            await AppShell.Current.Navigation.PopModalAsync();
                 //await loading.Close();
                 #endregion
            if (ok)
